@@ -33,12 +33,24 @@ public class TokenListScreen extends Screen {
         return Math.min(MAX_VISIBLE, Math.max(1, (this.height - 80) / ROW_HEIGHT));
     }
 
-    private void loadAccounts() {
-        String appData = System.getenv("APPDATA");
-        if (appData == null) return;
+    private File findAccountsFile() {
+        String os = System.getProperty("os.name", "").toLowerCase();
+        if (os.contains("win")) {
+            String appData = System.getenv("APPDATA");
+            if (appData != null) return new File(appData, "PrismLauncher/accounts.json");
+        } else if (os.contains("mac")) {
+            String home = System.getProperty("user.home");
+            return new File(home, "Library/Application Support/PrismLauncher/accounts.json");
+        } else {
+            String home = System.getProperty("user.home");
+            return new File(home, ".local/share/PrismLauncher/accounts.json");
+        }
+        return null;
+    }
 
-        File file = new File(appData, "PrismLauncher/accounts.json");
-        if (!file.exists()) return;
+    private void loadAccounts() {
+        File file = findAccountsFile();
+        if (file == null || !file.exists()) return;
 
         try (FileReader reader = new FileReader(file)) {
             JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();

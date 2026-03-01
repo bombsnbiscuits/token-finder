@@ -40,9 +40,15 @@ The compiled `.jar` will be in `build/libs/`.
 
 ## How It Works
 
-The mod reads Prism Launcher's `accounts.json` from `%APPDATA%/PrismLauncher/` and extracts the session token (`ygg.token`) for each account. Tokens can be copied to the clipboard from an in-game GUI.
+The mod reads Prism Launcher's `accounts.json` and extracts the session token (`ygg.token`) for each account. Tokens can be copied to the clipboard from an in-game GUI.
 
-> **Note:** This mod is Windows-only since it reads from `%APPDATA%`.
+### Supported platforms
+
+| OS | Path |
+|---|---|
+| Windows | `%APPDATA%/PrismLauncher/accounts.json` |
+| Linux | `~/.local/share/PrismLauncher/accounts.json` |
+| macOS | `~/Library/Application Support/PrismLauncher/accounts.json` |
 
 ## License
 
