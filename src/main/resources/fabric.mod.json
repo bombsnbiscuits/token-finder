@@ -1,0 +1,19 @@
+{
+    "schemaVersion": 1,
+    "id": "sessiontoken",
+    "version": "${version}",
+    "name": "Session Token Extractor",
+    "description": "Adds a button to the title screen to copy Prism Launcher session tokens.",
+    "authors": ["liamj"],
+    "license": "MIT",
+    "environment": "client",
+    "entrypoints": {
+        "client": ["com.sessiontoken.SessionTokenMod"]
+    },
+    "depends": {
+        "fabricloader": ">=0.16.0",
+        "minecraft": "~1.21.10",
+        "java": ">=21",
+        "fabric-api": "*"
+    }
+}
