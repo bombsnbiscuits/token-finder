@@ -3,17 +3,21 @@
     "id": "sessiontoken",
     "version": "${version}",
     "name": "Session Token Extractor",
-    "description": "Adds a button to the title screen to copy Prism Launcher session tokens.",
+    "description": "Extract and manage session tokens from Prism Launcher and MultiMC with search, masking, keybinds, and more.",
     "authors": ["liamj"],
     "license": "MIT",
     "environment": "client",
     "entrypoints": {
-        "client": ["com.sessiontoken.SessionTokenMod"]
+        "client": ["com.sessiontoken.SessionTokenMod"],
+        "modmenu": ["com.sessiontoken.ModMenuIntegration"]
     },
     "depends": {
         "fabricloader": ">=0.16.0",
         "minecraft": "~1.21.10",
         "java": ">=21",
         "fabric-api": "*"
+    },
+    "suggests": {
+        "modmenu": "*"
     }
 }
